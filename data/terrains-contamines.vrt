@@ -1,0 +1,9 @@
+<OGRVRTDataSource>
+  <OGRVRTLayer name="terrains-contamines">
+    <SrcDataSource relativeToVRT="1">terrains-contamines.csv</SrcDataSource>
+    <SrcLayer>terrains-contamines</SrcLayer>
+    <GeometryType>wkbPoint</GeometryType>
+    <LayerSRS>WGS84</LayerSRS>
+    <GeometryField encoding="PointFromColumns" x="LONGITUDE_DEG_DEC_NAD83" y="LATITUDE_DEG_DEC_NAD83"/>
+  </OGRVRTLayer>
+</OGRVRTDataSource>
