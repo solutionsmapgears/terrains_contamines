@@ -1,8 +1,12 @@
 function App(){
     var self = this;
 
+    this.selectors = null;
+
+    this.map = null;
+
     App.prototype.init = function(){
-        var map = L.map('map', {
+        this.map = L.map('map', {
             zoom: 5,
             minZoom: 5,
             maxZoom: 18,
@@ -13,7 +17,7 @@ function App(){
             tms: true,
             dragging: true,
             zoomAnimation:true
-        }).addTo(map); 
+        }).addTo(this.map); 
 
         $.getJSON("data/terrains-contamines.json", function(json) {
             var markers = L.markerClusterGroup({
@@ -27,12 +31,52 @@ function App(){
             })
 
             markers.addLayer(points)
-            map.addLayer(markers) 
+            self.map.addLayer(markers) 
         });
+
+        this.selectors = {
+            entreprises: function(){ return $('#entreprises') }
+        }
+
+        this.bindEvents();
     }
+
+    App.prototype.bindEvents = function(){
+        this.selectors.entreprises().on('change', function(e){
+            var lat = null, lon = null;
+            switch($(this).find('option:selected').val()){
+                case '1':
+                    lon = -74;
+                    lat = 42;
+                    break;
+                case '2':
+                    lon = -78;
+                    lat = 48;
+                    break;
+                case '3':
+                    lon = -78;
+                    lat = 50;
+                    break;
+                case '4':
+                    lon = -72;
+                    lat = 46;
+                    break;
+                case '5':
+                    lon = -74;
+                    lat = 44;
+                    break;
+                default:
+                    break;
+            }
+            if(lat != null){
+                self.map.setView([lat, lon], 12)
+            }
+        })
+    }
+
+    this.init();
 }
 
 $(document).ready(function() {
     var app = new App();
-    app.init();
 });

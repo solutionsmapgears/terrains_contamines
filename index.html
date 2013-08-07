@@ -22,9 +22,37 @@
 	</head>
 
 	<body>
+		<div class="top-bar">
+			<select id="contaminants">
+				<option value="1">Hydrocarbures</option>
+				<option value="2">Plomb</option>
+				<option value="3">Huile usée</option>
+				<option value="4">Benzène</option>
+				<option value="5">Naphtalène</option>
+			</select>
+			<select id="entreprises">
+				<option value="0"></option>
+				<option value="1">Shell Canada</option>
+				<option value="2">Irving</option>
+				<option value="3">Alcan</option>
+				<option value="4">Aéroport de Québec</option>
+				<option value="5">Aéroport Pierre Elliott Trudeau</option>
+			</select>
+		</div>
 		<div id="map" class="map"></div>
+		<div class="bottom-bar">
+			<table id="legend">
+				<tr>
+					<td class="red">Hydrocarbures</td>
+					<td class="yellow">Plomb</td>
+					<td class="green">Huile usée</td>
+					<td class="blue">Benzène</td>
+					<td class="purple">Napthtalène</td>
+				</tr>
+			</table>
+		</div>
 
-		<script src="static/js/lib/jQuery/jquery-1.8.1.min.js"></script> 
+		<script src="static/js/lib/jQuery/jquery-1.8.1.min.js"></script>
 	  	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script> 
 		<script src="static/js/lib/leaflet/leaflet.markercluster.js"></script>
 		<script src="static/js/main.js"></script>   
