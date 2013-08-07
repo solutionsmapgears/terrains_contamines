@@ -21,7 +21,8 @@ function App(){
 
         $.getJSON("data/terrains-contamines.json", function(json) {
             var markers = L.markerClusterGroup({
-                maxClusterRadius: 50
+                maxClusterRadius: 50,
+                showCoverageOnHover: false
             });
             var points = new L.geoJson(json, {
                 onEachFeature: function (feature, layer) {
